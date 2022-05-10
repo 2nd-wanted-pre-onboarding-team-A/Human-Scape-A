@@ -11,11 +11,29 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from my_settings import SECRET_KEY, DATABASES
+import os
 
 import pymysql
 
 pymysql.install_as_MySQLdb()
+
+try:
+    from my_settings import SECRET_KEY, DEBUG, DATABASES
+except:
+    SECRET_KEY = os.environ['SECRET_KEY']
+    DEBUG = True
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'human',
+            'USER': 'root',                   
+            'PASSWORD': os.environ['MYSQL_ROOT_PASSWORD'],         
+            'HOST': 'mymysql',           
+            'PORT': '3306',
+        }
+    }
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,9 +46,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['*','localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['myweb','*','localhost', '127.0.0.1']
 
 
 # Application definition
