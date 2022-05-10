@@ -1,7 +1,11 @@
 import requests, datetime
+import os
 
 from research.models import Research
-from my_settings import OPEN_API_SECRET_KEY
+try:
+    from my_settings import OPEN_API_SECRET_KEY
+except:
+    OPEN_API_SECRET_KEY = os.environ['OPEN_API_SECRET_KEY']
 
 OPEN_API_URL = 'https://api.odcloud.kr/api/3074271/v1/uddi:cfc19dda-6f75-4c57-86a8-bb9c8b103887'
 OPEN_API_SECRET_KEY = OPEN_API_SECRET_KEY
