@@ -21,7 +21,7 @@ try:
     from my_settings import SECRET_KEY, DEBUG, DATABASES
 except:
     SECRET_KEY = os.environ['SECRET_KEY']
-    DEBUG = True
+    DEBUG = False
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
