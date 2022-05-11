@@ -1,8 +1,6 @@
-import logging
-import logging.handlers
-
 import requests
 import os
+from core.logger import batch_task_logger
 
 from research.models import Research
 try:
@@ -12,19 +10,6 @@ except:
 
 OPEN_API_URL = 'https://api.odcloud.kr/api/3074271/v1/uddi:cfc19dda-6f75-4c57-86a8-bb9c8b103887'
 OPEN_API_SECRET_KEY = OPEN_API_SECRET_KEY
-
-def batch_task_logger(success_count, failure_count):
-    logger = logging.getLogger(__name__)
-    formatter = logging.Formatter('[%(asctime)s][%(levelname)s] >> %(message)s')
-    streamHandler = logging.StreamHandler()
-    fileHandler = logging.FileHandler('./batch_task.log')
-    streamHandler.setFormatter(formatter)
-    fileHandler.setFormatter(formatter)
-
-    logger.addHandler(streamHandler)
-    logger.addHandler(fileHandler)
-    logger.setLevel(level=logging.DEBUG)
-    logger.info(f'{success_count} rows created, {failure_count} rows failed.')
 
 def get_count():
     """
