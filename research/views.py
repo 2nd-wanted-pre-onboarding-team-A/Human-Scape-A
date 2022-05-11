@@ -1,5 +1,4 @@
 import json
-from turtle import up, update
 
 from django.http      import JsonResponse
 from django.views     import View
