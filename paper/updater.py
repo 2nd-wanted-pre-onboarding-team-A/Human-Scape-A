@@ -1,4 +1,4 @@
-import requests, datetime
+import requests
 import os
 
 from .models import Paper, TotalNumber
@@ -12,6 +12,11 @@ OPEN_API_SECRET_KEY_CHALLENGE = OPEN_API_SECRET_KEY_CHALLENGE
 
 
 class BatchTask:
+    '''
+    writer: 윤상민
+    도전과제 문제이해를 잘못하여 만들었던 코드입니다. 그래서 Scheduler부분의 Time간격을 길게 해두어
+    사실상 작동하지 않게 만들었습니다.
+    '''
     def get_count(self):
         params = {
             'serviceKey' : OPEN_API_SECRET_KEY_CHALLENGE,
