@@ -76,7 +76,8 @@ class UpdateDataListView(View):
                 return JsonResponse ({'message' : '업데이트 된 정보가 없습니다.'}, status=404)
 
             weekly_updated = Research.objects.filter(
-                             updated_at__range=[now - timedelta(days=7), now])\
+                             updated_at__range=[now - timedelta(days=7), now], 
+                             created_at__range=[now - timedelta(days=7), now])\
                              .order_by('-updated_at')[OFFSET:OFFSET+LIMIT]
 
             result = {

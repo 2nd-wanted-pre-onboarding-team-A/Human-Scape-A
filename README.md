@@ -224,9 +224,9 @@ curl
 
 
 
-## [API Documentation](https://documenter.getpostman.com/view/18241468/UyxgK8ck)
+## API Documentation
 - `Deploy Address` : http://wanted-ateam.xyz/api/v1/research
-- `API Documentation`의 주소는 local로 되어있습니다. local 주소를 위의 배포주소로 교체하면 결과를 볼 수 있습니다.
+- [`API Documentation`](https://documenter.getpostman.com/view/18241468/UyxgK8ck)의 주소는 local로 되어있습니다. local 주소를 위의 배포주소로 교체하면 결과를 볼 수 있습니다.
 
 
 
