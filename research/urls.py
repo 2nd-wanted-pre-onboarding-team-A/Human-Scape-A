@@ -5,5 +5,5 @@ from research.views import PublicDataListView, PublicDataDetailView, UpdateDataL
 urlpatterns = [
     path('research', PublicDataListView.as_view()),
     path('research/<int:id>', PublicDataDetailView.as_view()),
-    path('weekly', UpdateDataListView.as_view()),
+    path('research/weekly', UpdateDataListView.as_view()),
 ]
