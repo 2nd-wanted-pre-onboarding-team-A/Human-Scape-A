@@ -16,7 +16,7 @@ class PublicDataListView(View):
     """
     def get(self, request):
         try:
-            sorting = request.GET.get('sort', 'latest')
+            sorting = request.GET.get('sort', 'id')
             search = request.GET.get('search')
             institute = request.GET.get('institute')
             OFFSET = int(request.GET.get('offset',0))
@@ -31,9 +31,9 @@ class PublicDataListView(View):
                 q &= Q(institute__icontains = institute)
 
             sort = {
-                'latest' : 'created_at',
-                'oldest' : '-created_at',
-                'update' : 'updated_at'
+                'latest' : '-updated_at',
+                'oldest' : 'created_at',
+                'id' : 'id'
             }
 
             search_data_set = Research.objects.filter(q)\
@@ -69,17 +69,19 @@ class UpdateDataListView(View):
         try:
             OFFSET = int(request.GET.get('offset',0))
             LIMIT = int(request.GET.get('limit', 10))
-            now = datetime.now()
-            # now = datetime(year=2022, month=6, day=1) 
+            now = datetime.now() 
+            # now = datetime(year=2022, month=5, day=20) # 업데이트 결과 확인용 
 
             if not Research.objects.filter(updated_at__range=[now - timedelta(days=7), now]).exists():
                 return JsonResponse ({'message' : '업데이트 된 정보가 없습니다.'}, status=404)
 
             weekly_updated = Research.objects.filter(
-                             updated_at__range=[now - timedelta(days=7), now])[OFFSET:OFFSET+LIMIT]
+                             updated_at__range=[now - timedelta(days=7), now])\
+                             .order_by('-updated_at')[OFFSET:OFFSET+LIMIT]
 
             result = {
                 'data' : [{
+                    'id' : research_data.id,
                     '과제명' : research_data.title,
                     '과제 번호' : research_data.number,
                     '연구 기간' : research_data.duration,
@@ -89,6 +91,7 @@ class UpdateDataListView(View):
                     '임상 시험 단계': research_data.stage,
                     '전체 목표 연구 대상자 수' : research_data.target,
                     '진료과' : research_data.department,
+                    '업데이트 시간' : research_data.updated_at,
                 }for research_data in weekly_updated]
             }
             return JsonResponse({'result' : result}, status=200)
@@ -111,6 +114,7 @@ class PublicDataDetailView(View):
             data = Research.objects.get(id=id)
 
             result = {
+                    'id' : data.id,
                     '과제명' : data.title,
                     '과제 번호' : data.number,
                     '연구 기간' : data.duration,
@@ -120,9 +124,48 @@ class PublicDataDetailView(View):
                     '임상 시험 단계': data.stage,
                     '전체 목표 연구 대상자 수' : data.target,
                     '진료과' : data.department,
+                    '업데이트 시간' : data.updated_at,
             }
 
             return JsonResponse({'result':result}, status=200)
 
         except KeyError:
-            return JsonResponse({'message':'KEY_ERROR'}, status=400)    
+            return JsonResponse({'message':'KEY_ERROR'}, status=400)
+
+    """
+    개발용 데이터 PATCH 함수 (업데이트 확인)
+    Writer : 양수영
+    Reviewer : 권은경, 윤상민
+    """
+    def patch(self, request, id):
+            try:
+                data = json.loads(request.body)
+                research = Research.objects.get(id=id)
+
+                title = data['title']
+                # number = data['number'] # 수정 불가
+                duration = data['duration']
+                scope = data['scope']
+                type = data['type']
+                institute = data['institute']
+                stage = data['stage']
+                target = data['target']
+                department = data['department']
+
+                research.title = title
+                research.duration = duration
+                research.scope = scope
+                research.type = type
+                research.institute = institute
+                research.stage = stage
+                research.target = target
+                research.department = department
+                research.save()
+
+                return JsonResponse({'message':'SUCCESS'}, status = 200)
+
+            except KeyError:
+                return JsonResponse({'message':'KEY_ERROR'}, status=400)
+
+            except Research.DoesNotExist:
+                return JsonResponse({'message':'RESEARCH_DOES_NOT_EXIST'}, status=404)
