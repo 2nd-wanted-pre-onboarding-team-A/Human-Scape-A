@@ -1,16 +1,24 @@
+![1_ePn61nZEatSdCPKVl5yxZQ](https://user-images.githubusercontent.com/89339349/141935627-71b33a42-d56a-4778-9312-09c57eccecdb.png)
 # 👩‍💻 Team
 
-- **[양수영](https://github.com/tasddc1226)**
-- **[권은경](https://github.com/fore0919)**
-- **[윤상민](https://github.com/redtea89)**
+| 이름       | Github                                          | 담당 역할                                                    |
+| ---------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| 👨‍💻 양수영 | [tasddc1226](https://github.com/tasddc1226)     | DB Modeling, 수집 스크립트(batch task)작성 및 Logging 로직 작성 |
+| 👩‍💻 권은경 | [fore0919](https://github.com/fore0919) | 최근 일주일내에 업데이트 된 임상정보 리스트 view, 임상정보 검색 view, 임상정보 Detail view, API 문서화  |
+| 🧑‍💻 윤상민  | [redtea89](https://github.com/redtea89)           | Docker 배포 및 문서화, 수집 스크립트(batch task) 작성, 가산점 기능 구현, 실행 Guide 작성  |
+
+ㅤ👪 ㅤ공동작업 : 공공 API 및 요구사항 분석
 
 ```
 프로젝트 진행 기간 2022.05.10 09:00 ~ 2022.05.13 18:00
 ```
 
-[`Team-A-notion`](https://pretty-marlin-13a.notion.site/Team-A-03cf51c7174847ce88a6302e6939ea2a)
+## [`Team-A-notion`](https://pretty-marlin-13a.notion.site/Team-A-03cf51c7174847ce88a6302e6939ea2a)
+  - 과제 요구 분석 및 역할 분담, 개발 일정 공유를 위해 사용
 
+## 사용 기술
 
+[![Python](https://camo.githubusercontent.com/a1b2dac5667822ee0d98ae6d799da61987fd1658dfeb4d2ca6e3c99b1535ebd8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d3336373041303f7374796c653d666f722d7468652d6261646765266c6f676f3d707974686f6e266c6f676f436f6c6f723d666664643534)](https://camo.githubusercontent.com/a1b2dac5667822ee0d98ae6d799da61987fd1658dfeb4d2ca6e3c99b1535ebd8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d3336373041303f7374796c653d666f722d7468652d6261646765266c6f676f3d707974686f6e266c6f676f436f6c6f723d666664643534)ㅤ[![Django](https://camo.githubusercontent.com/5473e0d3006bb7e662bdf754d830a026ce050be61f1cbbd4689783ae49950b93/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646a616e676f2d2532333039324532302e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d646a616e676f266c6f676f436f6c6f723d7768697465)](https://camo.githubusercontent.com/5473e0d3006bb7e662bdf754d830a026ce050be61f1cbbd4689783ae49950b93/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646a616e676f2d2532333039324532302e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d646a616e676f266c6f676f436f6c6f723d7768697465)ㅤ[![MySQL](https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white)ㅤ[![Docker](https://camo.githubusercontent.com/6b7f701cf0bea42833751b754688f1a27b6090fdf90bf2b226addff01be817f0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646f636b65722d2532333064623765642e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d646f636b6572266c6f676f436f6c6f723d7768697465)](https://camo.githubusercontent.com/6b7f701cf0bea42833751b754688f1a27b6090fdf90bf2b226addff01be817f0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646f636b65722d2532333064623765642e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d646f636b6572266c6f676f436f6c6f723d7768697465)ㅤ[![Postman](https://camo.githubusercontent.com/3f0e26b0951bab845a1bb9a7198ecca0da272e462921b6edd85879f3673b6927/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f506f73746d616e2d4646364333373f7374796c653d666f722d7468652d6261646765266c6f676f3d706f73746d616e266c6f676f436f6c6f723d7768697465)](https://camo.githubusercontent.com/3f0e26b0951bab845a1bb9a7198ecca0da272e462921b6edd85879f3673b6927/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f506f73746d616e2d4646364333373f7374796c653d666f722d7468652d6261646765266c6f676f3d706f73746d616e266c6f676f436f6c6f723d7768697465)ㅤ[![GitHub](https://camo.githubusercontent.com/f6d50128cb007f85916b7a899da5d94f654dce35a37331c8d28573aef46f4274/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6769746875622d2532333132313031312e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465)](https://camo.githubusercontent.com/f6d50128cb007f85916b7a899da5d94f654dce35a37331c8d28573aef46f4274/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6769746875622d2532333132313031312e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465)
 
 ## 개인별 구현방법 및 어려웠던 점
 
@@ -216,8 +224,9 @@ curl
 
 
 
-## API Documentation
-
+## [API Documentation](https://documenter.getpostman.com/view/18241468/UyxgK8ck)
+- `Deploy Address` : http://wanted-ateam.xyz/api/v1/research
+- `API Documentation`의 주소는 local로 되어있습니다. local 주소를 위의 배포주소로 교체하면 결과를 볼 수 있습니다.
 
 
 
