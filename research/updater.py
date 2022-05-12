@@ -1,6 +1,7 @@
 import requests
 import os
 from core.logger import batch_task_logger
+import datetime
 
 from research.models import Research
 try:
@@ -32,8 +33,10 @@ def batch_task():
         'serviceKey' : OPEN_API_SECRET_KEY
     }
 
-    success_count = 0
-    failure_count = 0
+    success_count = 0 # DB에 적재된 데이터의 총 갯수
+    failure_count = 0 # 이미 존재하는 데이터의 총 갯수
+    pass_count = 0    # 수정된 데이터의 총 갯수
+
     response = requests.get(OPEN_API_URL, params=params).json()
 
     for study in response['data']:
@@ -55,8 +58,14 @@ def batch_task():
             success_count += 1
         else:
             # 이미 과제 번호가 등록되어 있는 경우
-            failure_count += 1
+            # 해당 연구의 수정날짜와 등록날짜 비교
+            research = Research.objects.get(number=number)
+            if (research.updated_at).strftime('%Y-%m-%d %H:%M:%S')\
+                != (research.created_at).strftime('%Y-%m-%d %H:%M:%S'):
+                pass_count += 1
+            else:
+                failure_count += 1
 
-    # API 1회 요청에 대한 성공, 실패 row개수를 로깅
-    batch_task_logger(success_count, failure_count)
+    # API 1회 요청에 대한 성공, 실패, 통과된 row개수를 로깅
+    batch_task_logger(success_count, failure_count, pass_count)
    
