@@ -53,7 +53,7 @@ class PublicDataListView(View):
                     '진료과' : research_data.department,
                 }for research_data in search_data_set]
             }
-            return JsonResponse({'result' : result}, status=200)
+            return JsonResponse({'result' : result}, json_dumps_params={'ensure_ascii': False}, status=200)
         
         except KeyError:
             return JsonResponse({'message' : 'KEY_ERROR'}, status=400)
@@ -94,7 +94,7 @@ class UpdateDataListView(View):
                     '업데이트 시간' : research_data.updated_at,
                 }for research_data in weekly_updated]
             }
-            return JsonResponse({'result' : result}, status=200)
+            return JsonResponse({'result' : result}, json_dumps_params={'ensure_ascii': False}, status=200)
         
         except KeyError:
             return JsonResponse({'message' : 'KEY_ERROR'}, status=400)
@@ -127,7 +127,7 @@ class PublicDataDetailView(View):
                     '업데이트 시간' : data.updated_at,
             }
 
-            return JsonResponse({'result':result}, status=200)
+            return JsonResponse({'result':result}, json_dumps_params={'ensure_ascii': False}, status=200)
 
         except KeyError:
             return JsonResponse({'message':'KEY_ERROR'}, status=400)
