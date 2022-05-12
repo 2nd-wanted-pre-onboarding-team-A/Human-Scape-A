@@ -9,12 +9,12 @@ from research.models import Research
 
 
 class PublicDataListView(View):
+    """
+    정렬기능, 제목 검색기능을 포함한 데이터 목록 조회 API
+    Writer : 권은경
+    Reviewer : 윤상민, 양수영
+    """
     def get(self, request):
-        """
-        정렬기능, 제목 검색기능을 포함한 데이터 목록 조회 API
-        Writer : 권은경
-        Reviewer : 윤상민, 양수영
-        """
         try:
             sorting = request.GET.get('sort', 'id')
             search = request.GET.get('search')
@@ -60,12 +60,12 @@ class PublicDataListView(View):
 
 
 class UpdateDataListView(View):
+    """
+    최근 일주일 동안 업데이트 된 데이터 목록 조회 API
+    Writer : 권은경
+    Reviewer : 윤상민, 양수영
+    """
     def get(self, request):
-        """
-        최근 일주일 동안 업데이트 된 데이터 목록 조회 API
-        Writer : 권은경
-        Reviewer : 윤상민, 양수영
-        """
         try:
             OFFSET = int(request.GET.get('offset',0))
             LIMIT = int(request.GET.get('limit', 10))
@@ -101,12 +101,12 @@ class UpdateDataListView(View):
 
 
 class PublicDataDetailView(View):
+    """
+    연구 데이터 상세 정보 조회 API (id 기준)
+    Writer : 권은경
+    Reviewer : 윤상민, 양수영
+    """
     def get(self, request, id):
-        """
-        연구 데이터 상세 정보 조회 API (id 기준)
-        Writer : 권은경
-        Reviewer : 윤상민, 양수영
-        """
         try:
             if not Research.objects.filter(id=id).exists():
                 return JsonResponse({'message':'DOES_NOT_EXIST'}, status=404)
@@ -132,40 +132,40 @@ class PublicDataDetailView(View):
         except KeyError:
             return JsonResponse({'message':'KEY_ERROR'}, status=400)
 
+    """
+    개발용 데이터 PATCH 함수 (업데이트 확인)
+    Writer : 양수영
+    Reviewer : 권은경, 윤상민
+    """
     def patch(self, request, id):
-        """
-        개발용 데이터 PATCH 함수 (업데이트 확인)
-        Writer : 양수영
-        Reviewer : 권은경, 윤상민
-        """
-        try:
-            data = json.loads(request.body)
-            research = Research.objects.get(id=id)
+            try:
+                data = json.loads(request.body)
+                research = Research.objects.get(id=id)
 
-            title = data['title']
-            # number = data['number'] # 수정 불가
-            duration = data['duration']
-            scope = data['scope']
-            type = data['type']
-            institute = data['institute']
-            stage = data['stage']
-            target = data['target']
-            department = data['department']
+                title = data['title']
+                # number = data['number'] # 수정 불가
+                duration = data['duration']
+                scope = data['scope']
+                type = data['type']
+                institute = data['institute']
+                stage = data['stage']
+                target = data['target']
+                department = data['department']
 
-            research.title = title
-            research.duration = duration
-            research.scope = scope
-            research.type = type
-            research.institute = institute
-            research.stage = stage
-            research.target = target
-            research.department = department
-            research.save()
+                research.title = title
+                research.duration = duration
+                research.scope = scope
+                research.type = type
+                research.institute = institute
+                research.stage = stage
+                research.target = target
+                research.department = department
+                research.save()
 
-            return JsonResponse({'message':'SUCCESS'}, status = 200)
+                return JsonResponse({'message':'SUCCESS'}, status = 200)
 
-        except KeyError:
-            return JsonResponse({'message':'KEY_ERROR'}, status=400)
+            except KeyError:
+                return JsonResponse({'message':'KEY_ERROR'}, status=400)
 
-        except Research.DoesNotExist:
-            return JsonResponse({'message':'RESEARCH_DOES_NOT_EXIST'}, status=404)
+            except Research.DoesNotExist:
+                return JsonResponse({'message':'RESEARCH_DOES_NOT_EXIST'}, status=404)
