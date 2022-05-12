@@ -4,7 +4,7 @@
 | 이름       | Github                                          | 담당 역할                                                    |
 | ---------- | ----------------------------------------------- | ------------------------------------------------------------ |
 | 양수영 | [tasddc1226](https://github.com/tasddc1226)     | DB Modeling, 수집 스크립트(batch task)작성 및 Logging 로직 작성 |
-| 권은경 | [fore0919](https://github.com/fore0919) | 최근 일주일내에 업데이트 된 임상정보 리스트 view, 임상정보 검색 view, 임상정보 Detail view, API 문서화  |
+| 권은경 | [fore0919](https://github.com/fore0919) | 최근 일주일내에 업데이트 된 임상정보 리스트 view, 임상정보 검색 및 Detail view, API 문서화  |
 | 윤상민  | [redtea89](https://github.com/redtea89)           | Docker 배포 및 문서화, 수집 스크립트(batch task) 작성, 가산점 기능 구현, 실행 Guide 작성  |
 
 ㅤ👪 ㅤ공동작업 : 공공 API 및 요구사항 분석
